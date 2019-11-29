@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     working_directory: ~/angular-cli-circleci
     docker:
       - image: circleci/node:6-browsers
@@ -31,4 +31,9 @@ jobs:
       - store_artifacts:
           path: tslint.xml
           prefix: lint
-   
+  build:
+     working_directory: ~/circle-tmp-folder
+    steps:
+      - run:
+          name: build
+          command: 'yarn build'
