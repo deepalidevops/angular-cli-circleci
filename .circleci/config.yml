@@ -31,9 +31,4 @@ jobs:
       - store_artifacts:
           path: tslint.xml
           prefix: lint
-  build:
-     working_directory: ~/circle-tmp-folder
-    steps:
-      - run:
-          name: build
-          command: 'yarn build'
+  
