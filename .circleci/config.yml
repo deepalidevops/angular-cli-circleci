@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  build:
+    build:
        working_directory: ~/angular-cli-circleci
-    docker:
+     docker:
       - image: circleci/node:6-browsers
   steps:
       - checkout
