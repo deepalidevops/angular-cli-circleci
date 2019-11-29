@@ -1,7 +1,7 @@
 version: 2
 jobs:
-   build:
-       working_directory: ~/angular-cli-circleci
+  build:
+    working_directory: ~/angular-cli-circleci
     docker:
       - image: circleci/node:6-browsers
     steps:
@@ -16,6 +16,9 @@ jobs:
           paths:
             - ~/.cache/yarn
             - ./node_modules
+      - run:
+          name: angular-build
+          command: yarn ng -- build --prod --aot --no-progress
       - run:
           name: angular-test
           command: yarn test -- --single-run --no-progress
