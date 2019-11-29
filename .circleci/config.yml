@@ -31,15 +31,4 @@ jobs:
       - store_artifacts:
           path: tslint.xml
           prefix: lint
-    steps:
-      - run:
-          name: build
-          command: 'yarn build'
-      - deploy:
-          machine:
-            enabled: true
-          working_directory: ~/angular-cli-circleci
-    steps:
-       - run:
-           name: Deploy
-           command: 'aws s3 sync ${./dist}/ s3://${angular-s3-bucket} --region ap-south-1'
+   
