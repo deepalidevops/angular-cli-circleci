@@ -19,6 +19,9 @@ jobs:
       - run:
           name: angular-build
           command: yarn ng -- build --prod --aot --no-progress
+      - store_artifacts:
+          path: build.javascript
+          prefix: build
       - run:
           name: angular-test
           command: yarn test -- --single-run --no-progress
