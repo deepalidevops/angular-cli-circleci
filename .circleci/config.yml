@@ -2,9 +2,9 @@ version: 2
 jobs:
     build:
        working_directory: ~/angular-cli-circleci
-     docker:
+    docker:
       - image: circleci/node:6-browsers
-  steps:
+    steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
@@ -29,7 +29,6 @@ jobs:
           path: tslint.xml
           prefix: lint
     steps:
-      ... # build/dependancies
       - run:
           name: build
           command: 'yarn build'
