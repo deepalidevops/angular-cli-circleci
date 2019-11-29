@@ -17,12 +17,6 @@ jobs:
             - ~/.cache/yarn
             - ./node_modules
       - run:
-          name: angular-build
-          command: yarn ng -- build 
-      - store_artifacts:
-          path: build.xml
-          prefix: build
-      - run:
           name: angular-test
           command: yarn test -- --single-run --no-progress
       - store_artifacts:
@@ -34,3 +28,16 @@ jobs:
       - store_artifacts:
           path: tslint.xml
           prefix: lint
+    steps:
+      ... # build/dependancies
+      - run:
+          name: build
+          command: 'yarn build'
+   deploy:
+     machine:
+       enabled: true
+     working_directory: ~/angular-cli-circleci
+    steps:
+       - run:
+          name: Deploy
+          command: 'aws s3 sync ${./dist}/ s3://${angular-s3-bucket} --region ap-south-1'
