@@ -1,10 +1,10 @@
 version: 2
 jobs:
   build:
-   working_directory: ~/angular-cli-circleci
-   docker:
+       working_directory: ~/angular-cli-circleci
+    docker:
       - image: circleci/node:6-browsers
-    steps:
+  steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "yarn.lock" }}
