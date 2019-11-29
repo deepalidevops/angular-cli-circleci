@@ -31,4 +31,3 @@ jobs:
       - store_artifacts:
           path: tslint.xml
           prefix: lint
-  
